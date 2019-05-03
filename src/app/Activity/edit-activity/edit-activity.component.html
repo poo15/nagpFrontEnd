@@ -1,0 +1,66 @@
+<div class="container">
+    <form>
+        <fieldset>
+          <legend>Search Activity</legend>
+         
+            <div class="form-group">   
+              <div class="row">
+
+                <div class="col-lg-8">
+                    <input type="text" name="id" [(ngModel)]="activityId" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Activity Id">
+        
+                </div>
+
+                <div class="col-lg-4">
+                    <button type="submit" (click)="getActivity()" class="btn btn-primary">Search</button>
+                </div>
+
+              </div> 
+            </div> 
+        </fieldset>
+        <div class="alert alert-dismissible alert-warning alertBox" *ngIf='errorStatus' style="width: 75%">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Invalid Activity Id</strong>
+          </div>
+      </form>
+    </div>
+    <div class="container">
+        <form>
+            <fieldset>
+              <legend>Add Activity</legend>
+              <div class="alert alert-dismissible alert-success alertBox mb-2" *ngIf='updateStatus' style="width: 75%">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>Activity Updated</strong>
+                </div>
+                <div class="alert alert-dismissible alert-warning alertBox mb-2" *ngIf='errorStatus' style="width: 75%">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Activity can't Updated</strong>
+                  </div>
+              <div class="form-group">
+                
+                <input type="text" name="id" #id="ngModel" [(ngModel)]="activity.id" disabled class="form-control" id="id" aria-describedby="emailHelp" placeholder="Activity Id">
+              </div>
+                <div class="form-group">
+                   
+                    <input type="text" name="name"  [(ngModel)]="activity.name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Employee Name">
+                  </div>
+                  <div class="form-group">
+                 
+                      <input type="text" name="description"  [(ngModel)]="activity.description" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Activity Aescription">
+                    </div>
+                  <div class="form-group">
+                      
+                      <input type="number" name="points"  [(ngModel)]="activity.points" class="form-control" id="points" aria-describedby="emailHelp" placeholder="Enter Points">
+                    </div>
+                    <div class="form-group">
+                      
+                        <input type="number" name="maxQualificationPoints"  [(ngModel)]="activity.maxQualificationPoints" class="form-control" id="maxQualificationPoints" aria-describedby="emailHelp" placeholder="Maximum Attempts">
+                      </div>
+              <button (click)="editActivity()" class="btn btn-primary">Edit</button>
+            </fieldset>
+          </form>
+        
+        
+    </div>
+    
+

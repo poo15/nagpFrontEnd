@@ -1,0 +1,179 @@
+<div class="container-fluid  detailsForm" >
+    <form class="profile-info-inner">
+        <fieldset>
+         
+            <div class="form-group">   
+              <div class="row">
+
+                <div class="col-lg-8 col-md-6 col-sm-6">
+                    <input type="text" name="id" [(ngModel)]="applicantid" class="form-control" id="id" aria-describedby="emailHelp" placeholder="batch Id">
+        
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <button type="submit" (click)="getApplicant()" class="btn btn-primary">Search</button>
+                </div>
+
+              </div> 
+            </div> 
+        </fieldset>
+        <div class="alert alert-dismissible alert-warning alertBox" *ngIf='noElements' style="width: 75%">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Invalid Employee Id</strong>
+          </div>
+      </form>
+    </div>
+<div class="container-fluid" *ngIf="applicant.applicantId">
+    <div class="row">
+        
+        <div class="col-lg-4 col-md-4 col-sm-12 ">
+            <div class="profile-info-inner">
+                <div class="profile-img">
+                    <img src="../../assets/img/profile/1.jpg" alt="" />
+                </div>
+                <div class="profile-details-hr">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <div class="address-hr">
+                                <p ><b style="font-family: 'Franklin Gothic Medium'">Name</b><br /> {{ applicant.name}}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                <p><b style="font-family: 'Franklin Gothic Medium'">Department</b><br /> {{applicant.batch.id}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <div class="address-hr">
+                                <p><span><i class="fas fa-envelope-open mr-2"></i></span><b style="font-family: 'Franklin Gothic Medium'">Email ID</b><br /> {{applicant.email}}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                <p><span><i class="fas fa-phone mr-2"></i></span><b style="font-family: 'Franklin Gothic Medium'">Phone</b><br /> {{ applicant.contactNo}}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                    <p><span><i class="fas fa-star mr-2"></i></span><b style="font-family: 'Franklin Gothic Medium'">Total Points</b><br />  {{totalPoint}}</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+            <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                <ul id="myTabedu1" class="tab-review-design">
+                    <li [class]="activeRecord"><a (click)="showRecordsBlock()">Activities</a></li>
+                    <li [class]="activeAdd"><a (click)="showAddBlock()">Add Activities For Applicant</a></li>
+                </ul>
+                <div [hidden]="showRecordBlock">
+                        <div class="row">
+
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="address-hr">
+                                            <p ><b style="font-family: 'Franklin Gothic Medium'">Name</b></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="address-hr">
+                                                <p ><b style="font-family: 'Franklin Gothic Medium'">Status</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="address-hr">
+                                                    <p ><b style="font-family: 'Franklin Gothic Medium'">Level</b></p>
+                                                </div>
+                                        </div>
+        
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="address-hr">
+                                                    <p ><b style="font-family: 'Franklin Gothic Medium'">Score</b></p>
+                                                </div>
+                                        </div>
+        
+                        </div>
+                        <div class="row" *ngFor="let record of activitiesRecord; let i = index">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                <div class="address-hr">
+                                    <p > {{ record.activity.name}} </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" *ngIf="record.status != 'REVIEW PENDING'">
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                    <p> {{record.status}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6" *ngIf="record.status == 'REVIEW PENDING'">
+                                    <select (change)="takeScore($event.target.value, $event.target.id)" class="form-control" id="{{record.activityRecordId}}" >
+                                            <option value="REVIEW PENING">REVIEW PENING</option>
+                                            <option value="COMPLETED">COMPLETED</option>
+                                            <option  value="REVIEW FAILED">REVIEW FAILED</option>
+                                    </select>
+                                </div>
+                       
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                                <div class="address-hr">
+                                    <p> {{record.levelId}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6" >
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                        <input type="number"  name="score" disabled class="form-control" id="score-{{record.activityRecordId}}" value="0">
+                     
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 mt-1" >
+                                    <button type="submit"  (click)="updateApplicantRecord(record.activityRecordId,i)"  id="updateButton-{{record.activityRecordId}}" disabled class="btn btn-primary">Update</button>
+                            </div>
+                          </div>
+                </div>
+                <div  [hidden]="showAdd">
+                        <div class="row">
+
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="address-hr">
+                                            <p ><b style="font-family: 'Franklin Gothic Medium'">Name</b></p>
+                                        </div>
+                                    </div>
+                                   
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="address-hr">
+                                                    <p ><b style="font-family: 'Franklin Gothic Medium'">Level</b></p>
+                                                </div>
+                                        </div>
+        
+        
+                        </div>
+                        <div class="row" *ngFor="let record of canBeAddedActivities; let i = index">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                                <div class="address-hr">
+                                    <p > {{ record.name}} </p>
+                                </div>
+                            </div>
+                            
+                            
+                       
+                            <div class="col-lg-4 col-md-2 col-sm-6 col-xs-6">
+                                <div class="address-hr">
+                                    <p> {{record.level.id}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-3 col-md-2 col-sm-6 mt-1" >
+                                    <button type="submit"  (click)="addActivity($event.target.id)" id="{{record.id}}"  class="btn btn-primary">Assign</button>
+                            </div>
+                            
+                          </div>
+                </div>
+                </div>
+                
+          </div>
+
+    </div>
+</div>
+        

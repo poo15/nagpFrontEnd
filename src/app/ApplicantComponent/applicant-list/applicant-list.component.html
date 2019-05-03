@@ -1,0 +1,93 @@
+<div class="container">
+    <form>
+        <fieldset>
+            <div class="row">
+
+                <div class="col-lg-2">
+                  <div class="form-group">
+                      <label for="exampleSelect1">Select Batch</label>
+                      <select (change)="filterByBatch($event.target.value)" class="form-control" id="batch" >
+                        <option value="">Filter By Batch</option>
+                        <option *ngFor="let batch of batches" value="{{ batch.id}}">{{ batch.id}}</option>
+                      </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <label for="exampleSelect1">Filter By Level</label>
+                        <select (change)="filterByLevel($event.target.value)" class="form-control" id="level" >
+                          <option value="">Select Level</option>
+                          <option *ngFor="let level of levels" value="{{ level.id}}">{{ level.id}}</option>
+                        </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2">
+                      <div class="form-group">
+                          <label for="exampleSelect1">Filter By Status</label>
+                          <select (change)="filterByStatus($event.target.value)" class="form-control" id="status" >
+                            <option value="">Select Status</option>
+                            <option value="ASPIRING">ASPIRING</option>
+                            <option value="TAGGED">TAGGED</option>
+                            <option value="DROPPED">DROPPED</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <div class="form-group">
+                          <label for="exampleSelect1">Filter By Name</label>
+                             <input type="text" name="name" (change)="filterByName($event.target.value)" placeholder="Name" class="form-control" id="name" aria-describedby="emailHelp" >
+        
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <div class="form-group">
+                          <label for="exampleSelect1">Filter By Id</label>
+                             <input type="text" name="employeeId" (change)="filterById($event.target.value)" placeholder="Employee Id" class="form-control" id="name" aria-describedby="emailHelp" >
+                      </div>
+                  </div>
+
+
+
+            </div> 
+            <div class="row">
+                <div class="col-lg-2">
+                    <button  (click)="sortByName()" class="btn btn-primary mb-3">Sort By Name</button>
+                </div>
+                <div class="col-lg-3">
+                    <button  (click)="sortById()" class="btn btn-primary mb-3">Sort By Employee Id</button>
+                </div>
+                <div class="col-lg-2">
+                    <button  (click)="clear()" class="btn btn-primary mb-3">Clear Filters</button>
+                </div>
+            </div>
+         
+        </fieldset>
+      </form>
+    <div class="row">
+      <div class="ml-5 mt-3" *ngIf="noElements">
+
+      <p class="text-secondary">No Records Found</p>
+      </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" *ngFor="let applicant of filteredApplicants | paginate: { itemsPerPage: 2, currentPage: p }">
+            <div class="student-inner-std res-mg-b-30">
+                <div class="student-img">
+                    <img src="../../../assets/img/student/1.jpg" alt=""  />
+                </div>
+                <div class="student-dtl">
+                    <h2>{{ applicant.name}}</h2>
+                    <p class="dp"><b>Batch:-</b> {{ applicant.batch.id}}</p>
+                    <p class="dp-ag"><b>Level:- </b> {{ applicant.level.name}}</p>
+                </div>
+                <div class="product-buttons ">
+                        <button type="button" class="mb-3 button-default cart-btn" (click)="details(applicant.applicantId)">Details</button>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="row mt-3 mb-5"  >
+    <pagination-controls (pageChange)="p = $event" class="my-pagination mr-5" style="margin-left: auto"></pagination-controls>
+
+</div>
+</div>

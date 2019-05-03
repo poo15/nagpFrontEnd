@@ -1,0 +1,27 @@
+<div class="row ml-3">
+        <div class="ml-5 mt-3" *ngIf="noElements">
+
+                <p class="text-secondary">No Records Found</p>
+                </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" *ngFor="let batch of batches">
+        <div class="courses-inner res-mg-b-30">
+            <div class="courses-title">
+                <a href="#"><img src="../../assets/img/courses/1.jpg" alt=""></a>
+                <h2>{{ batch.id }}</h2>
+            </div>
+            <div class="courses-alaltic">
+                <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-clock"></i></span>Year {{ batch.year }}</span>
+                <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-heart"></i></span> Tech:- {{batch.technology}}</span>
+               
+            </div>
+            <div class="course-des">
+                <p><span></span> <b>Description:- </b> {{ batch.description}}</p>
+                <p><span></span> <b>Qualification Points:-</b> {{ batch.qualificationPoint}}</p>
+                <p><span></span> <b>Start Date:- </b>{{ batch.date}}</p>
+            </div>
+            <div class="product-buttons">
+                    <button type="button" class="button-default cart-btn" (click)="edit(batch.id)">Edit</button>
+                </div>
+        </div>
+    </div>
+</div>

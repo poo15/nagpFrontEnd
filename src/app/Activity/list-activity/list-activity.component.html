@@ -1,0 +1,74 @@
+<div class="container">
+    <form>
+        <fieldset>
+            <div class="row">
+
+                <div class="col-lg-2">
+                  <div class="form-group">
+                      <label for="exampleSelect1">Filter By Batch</label>
+                      <select (change)="filterByBatch($event.target.value)" class="form-control" id="batch" >
+                        <option value="">Select Batch</option>
+                        <option *ngFor="let batch of batches" value="{{ batch.id}}">{{ batch.id}}</option>
+                      </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <label for="exampleSelect1">Filter By Level</label>
+                        <select (change)="filterByLevel($event.target.value)" class="form-control" id="level" >
+                          <option value="">Select Level</option>
+                          <option *ngFor="let level of levels" value="{{ level.id}}">{{ level.id}}</option>
+                        </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2">
+                      <div class="form-group">
+                          <label for="exampleSelect1">Filter By Name</label>
+                             <input type="text" name="name" (change)="filterByName($event.target.value)" placeholder="Name" class="form-control" id="name" aria-describedby="emailHelp" >
+        
+                      </div>
+                    </div>
+                    <div class="col-lg-2 clearButton">
+                        <button  (click)="clear()" class="btn btn-primary mb-3">Clear Filters</button>
+                    </div>
+            </div> 
+            
+         
+        </fieldset>
+      </form>
+
+
+<div class="row">
+    <div class="ml-5 mt-3" *ngIf="noElements">
+
+        <p class="text-secondary">No Records Found</p>
+        </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" *ngFor="let activity of filteredActivities">
+      <div class="courses-inner res-mg-b-30">
+          <div class="courses-title">
+              <a href="#"><img src="../../assets/img/courses/1.jpg" alt=""></a>
+              
+              <b><span class="cr-ic-r"><span class="course-icon"></span>{{ activity.name }}</span><br></b>
+          </div>
+          <div class="courses-alaltic">
+            
+              <span class="cr-ic-r"><span class="course-icon"></span><i class="fas fa-users"></i> Batch:-  {{ activity.batch.id }}</span><br>
+              <span class="cr-ic-r"><span class="course-icon"></span> Level:- {{activity.level.id}}</span>
+             
+          </div>
+          <div class="course-des">
+              <p><span></span> <b>Description:- </b> {{ activity.description}}</p>
+              <p><span></span> <b>Qualification Points:-</b> {{ activity.points}}</p>
+              <p><span></span> <b>Max Attempts:- </b>{{ activity.maxQualificationPoints}}</p>
+              <b><p *ngIf="activity.optional"><span></span> <b> </b>Mandatory</p></b>
+              <b><p *ngIf="!activity.optional"><span></span> <b> </b>Optional</p></b>
+
+          </div>
+          <button type="button" class="btn btn-primary"  (click)="edit(activity.id)">Edit</button>
+      </div>
+  </div>
+</div>
+
+</div>

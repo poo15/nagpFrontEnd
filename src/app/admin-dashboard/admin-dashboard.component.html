@@ -1,0 +1,88 @@
+
+    <div class="wrapper" >
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html"><img class="main-logo" src="../assets/img/logo/logo.png" alt="" /></a>
+               </div>
+            
+            
+            <ul class="list-unstyled components">
+                    <li class="active">
+                            <a  routerLink="/admin" >Dashboard</a>
+                     </li>
+                <li class="active">
+                    <a  routerLink="/admin/level" >Level<a href="#levelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle ml-auto" style="width: 20px;margin-top: -10%"></a></a>
+                    <ul class="collapse list-unstyled" id="levelSubmenu">
+                        <li>
+                            <a routerLink="/admin/level">All Level</a>
+                        </li>
+                        <li>
+                            <a routerLink="/admin/level/add">Add Level</a>
+                        </li>
+                        <li>
+                            <a routerLink="/admin/level/edit">Edit Level</a>
+                        </li>
+                        <li>
+                            <a routerLink="/admin/level/detail">Level Detail</a>
+                        </li>
+                    </ul> 
+                </li>
+                
+                <li class="active">
+                        <a routerLink="/admin/batch" >Batch<a href="#batchSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle ml-auto" style="width: 20px;margin-top: -10%"></a></a>
+                        <ul class="collapse list-unstyled" id="batchSubmenu">
+                                <li>
+                                        <a routerLink="/admin/batch">All Batches</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/admin/batch/add">Add Batch</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/admin/batch/edit">Edit Batch</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/admin/batch/detail">Batch Detail</a>
+                                    </li>
+                        </ul> 
+                    </li>
+                    <li class="active">
+                            <a routerLink="/admin/activity" >Activity<a href="#activitySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle ml-auto" style="width: 20px;margin-top: -10%"></a></a>
+                            <ul class="collapse list-unstyled" id="activitySubmenu">
+                                <li>
+                                    <a routerLink="activity">Activity List</a>
+                                </li>
+                                <li>
+                                    <a routerLink="activity/add">Add Activity</a>
+                                </li>
+                                <li>
+                                    <a routerLink="activity/edit">Edit Activity</a>
+                                </li>
+                            </ul> 
+                        </li>
+                        <li class="active">
+                                <a routerLink="/admin/applicant" >Applicant<a href="#aplicantSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle ml-auto" style="width: 20px;margin-top: -10%"></a></a>
+                                <ul class="collapse list-unstyled" id="aplicantSubmenu">
+                                    <li>
+                                        <a routerLink="applicant">Applicant List</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="applicant/details">Applicant Details</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="applicant/add">Add Applicant</a>
+                                    </li>
+                                </ul> 
+                            </li>
+            </ul>
+            
+        </nav>
+        
+        <div class="content" style="width: 100%; ">
+       <app-top-navbar></app-top-navbar>
+        <router-outlet></router-outlet>
+       </div>
+       </div>
+       
+    
+
+    

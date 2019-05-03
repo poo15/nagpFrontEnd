@@ -1,0 +1,36 @@
+<div class="container">
+    <form >
+        <fieldset>
+          <legend>Add Batch</legend>
+          <div class="alert alert-dismissible alert-success alertBox mb-2" *ngIf='addStatus' style="width: 75%">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Batch Added</strong>
+            </div>
+          <div class="form-group">
+            
+            <input type="text" name="id" [(ngModel)]="batch.id" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Batch Id">
+          </div>
+          <div class="form-group">
+             
+              <input type="number" name="year" [(ngModel)]="batch.year"  class="form-control" id="year" aria-describedby="emailHelp" placeholder="Batch Year">
+            </div>
+            <div class="form-group">
+               
+                <input type="text" name="technology" [(ngModel)]="batch.technology"  class="form-control" id="name" aria-describedby="emailHelp" placeholder="Batch Technology">
+              </div>
+              <div class="form-group">
+                  
+                  <textarea rows="3" type="text" name="description" [(ngModel)]="batch.description"  class="form-control" id="description" aria-describedby="emailHelp" placeholder="Batch Description"></textarea>
+                </div>
+                <div class="form-group">
+                   
+                    <input type="number" [(ngModel)]="batch.qualificationPoint" name="qualificationPoint" class="form-control" id="qualificationPoint" aria-describedby="emailHelp" placeholder="Batch Qualification Point">
+                  </div>
+                  <input type="date" [(ngModel)]="batch.date" name="date" class="form-control" id="datepicker" />
+                 
+          <button type="button" (click)="addBatch()" class="btn btn-primary mt-2">Add Batch</button>
+        </fieldset>
+      </form>
+    
+    
+</div>

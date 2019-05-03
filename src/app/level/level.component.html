@@ -1,0 +1,24 @@
+<div class="row ml-3">
+        <div class="ml-5 mt-3" *ngIf="noElement">
+            <p class="text-secondary">No Records Found</p>
+        </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12"  *ngFor = "let level of levels;">
+        <div class="courses-inner res-mg-b-30">
+            <div class="courses-title">
+                <a href="#"><img src="../../assets/img/courses/1.jpg" alt=""></a>
+                <h2>{{ level.name}}</h2>
+            </div>
+            <div class="courses-alaltic">
+                <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-clock"></i></span>Number:- {{ level.number }}</span>
+               
+            </div>
+            <div class="course-des">
+                <p> <b>Description:- </b> {{ level.description }}</p><hr>
+                <p> <b>Qualification Points:-</b> {{ level.qualificationPoint}}</p>
+            </div>
+            <div class="product-buttons">
+                    <button type="button" class="button-default cart-btn" (click)="edit(level.id)">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
